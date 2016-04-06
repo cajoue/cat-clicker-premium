@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cat Clicker Premium">
+  <meta name="author" content="Valerie Yallup">
+  <title>Cat Clicker Premium</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="<link href='https://fonts.googleapis.com/css?family=Catamaran:700' rel='stylesheet' type='text/css'>">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <header>
+      <div class="flex-header">
+        <div class="header-title">
+          <h1>Cat Clicker</h1>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="flex-main">
+        <!-- Cats -->
+        <div id ="cats">
+          <h2>Click a cat!</h2>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/main.js"></script>
+  <script type="text/javascript">
+    if (document.getElementsByClassName('cat-unit').length === 0) {
+            document.getElementById('cats').style.display = 'none';
+        }
+  </script>
+</body>
+</html>
