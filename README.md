@@ -26,6 +26,12 @@ _Interaction_
 * The number of clicks in the cat area should be unique to each cat, and should increment when the cat's picture is clicked.
 
 **To Do:**
+* <del>create at least 5 cats</del>
+* create cat list for menu
+* create cat display area
+
+**Thoughts/Mods**
+* create a Cat class and use inheritance
 
 **Helpful Resources**
 

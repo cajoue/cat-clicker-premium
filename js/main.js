@@ -26,6 +26,38 @@ var cats = {
             sourceURL: 'http://placekitten.com',
             source: 'placekitten.com',
             count: 0
+        },
+        {
+            id: 'cat03',
+            name: 'Scott',
+            image: 'http://loremflickr.com/300/200/kitten?random=1',
+            sourceURL: 'http://loremflickr.com',
+            source: 'loremflickr.com',
+            count: 0
+        },
+        {
+            id: 'cat04',
+            name: 'Adam',
+            image: 'http://loremflickr.com/300/200/kitten?random=2',
+            sourceURL: 'http://loremflickr.com',
+            source: 'loremflickr.com',
+            count: 0
+        },
+        {
+            id: 'cat05',
+            name: 'Ali',
+            image: 'http://loremflickr.com/300/200/kitten?random=3',
+            sourceURL: 'http://loremflickr.com',
+            source: 'loremflickr.com',
+            count: 0
+        },
+        {
+            id: 'cat06',
+            name: 'Sean',
+            image: 'http://loremflickr.com/300/200/kitten?random=4',
+            sourceURL: 'http://loremflickr.com',
+            source: 'loremflickr.com',
+            count: 0
         }
     ]
 };
