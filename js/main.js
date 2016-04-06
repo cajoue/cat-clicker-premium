@@ -65,7 +65,7 @@ var cats = {
 cats.display = function(){
   for (var kitty = 0, kittyCount = cats.cat.length; kitty < kittyCount; kitty++){
     var formatCatID = catUnit.replace('%data%', cats.cat[kitty].id);
-    $('#cats').append(formatCatID);
+    $('#cat-arena').append(formatCatID);
 
     var formatCatName = catName.replace('%data%', cats.cat[kitty].name);
     $('figure:last').append(formatCatName);

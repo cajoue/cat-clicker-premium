@@ -34,6 +34,10 @@ h3 {
   font-size: 24px;
 }
 
+h4 {
+  font-size: 20px;
+}
+
 p,
 figcaption {
   font-size: 16px;
@@ -49,6 +53,11 @@ figcaption {
  * Layout
  *
  */
+
+/* testing - draws a border around each block */
+/** {
+    border: 1px solid red !important;
+}*/
 
 .page-wrapper {
   margin: 0 auto;
@@ -67,4 +76,12 @@ figcaption {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.nav {
+  width: 25%;
+}
+
+.display-area{
+  width: 75%;
 }

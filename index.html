@@ -23,8 +23,11 @@
     <main>
       <div class="flex-main">
         <!-- Cats -->
-        <div id ="cats">
-          <h2>Click a cat!</h2>
+        <nav id="cat-list" class="nav">
+          <h4>Select a cat</h4>
+        </nav>
+        <div id ="cat-arena" class="display-area">
+          <h2>Click your cat!</h2>
         </div>
       </div>
     </main>
@@ -32,7 +35,7 @@
   <script src="js/main.js"></script>
   <script type="text/javascript">
     if (document.getElementsByClassName('cat-unit').length === 0) {
-            document.getElementById('cats').style.display = 'none';
+            document.getElementById('cat-arena').style.display = 'none';
         }
   </script>
 </body>

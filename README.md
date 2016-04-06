@@ -28,10 +28,11 @@ _Interaction_
 **To Do:**
 * <del>create at least 5 cats</del>
 * create cat list for menu
-* create cat display area
+* create cat display area - arena
 
 **Thoughts/Mods**
 * create a Cat class and use inheritance
+* <del>create cat containers for cat menu and cat arena</del>
 
 **Helpful Resources**
 
