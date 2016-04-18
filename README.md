@@ -27,12 +27,15 @@ _Interaction_
 
 **To Do:**
 * <del>create at least 5 cats</del>
-* create cat list for menu
-* create cat display area - arena
+* <del>create cat list for menu</del>
+* <del>create cat display area - arena</del>
 
 **Thoughts/Mods**
-* create a Cat class - need some clarity!
+* <del>create a Cat class - need some clarity!</del>
 * <del>create cat containers for cat menu and cat arena</del>
 
 **Helpful Resources**
 https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes
+http://api.jquery.com/toArray/
+http://stackoverflow.com/questions/14673189/show-one-div-while-hiding-other-divs-with-jquery-when-clicking-on-links
+

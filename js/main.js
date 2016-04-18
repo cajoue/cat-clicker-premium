@@ -2,78 +2,70 @@
 
 // need some clarity! try creating a Cat class.
 
-
-
-// helper functions to display html
-
-var catUnit = '<div class="cat-unit"><figure id="%data%"></figure></div>';
-var catName = '<figcaption><h3>%data%</h3></figcaption>';
-var catImage = '<picture><img src="%data%" alt="picture of kitten"></picture>';
-var catSource = '<figcaption>Kitten thanks to <a href="%data%</a></figcaption>';
 var catListItem = '<li class="cat-list-item"><a href="#">%data%</a></li>';
 
 
 // cat JSON
 
 var cats = {
-    cat: [
-        {
-            id: 'cat01',
-            name: 'Katie',
-            image: 'http://placekitten.com/300/200',
-            sourceURL: 'http://placekitten.com',
-            source: 'placekitten.com',
-            count: 0
-        },
-        {
-            id: 'cat02',
-            name: 'Charlotte',
-            image: 'http://placekitten.com/g/300/200',
-            sourceURL: 'http://placekitten.com',
-            source: 'placekitten.com',
-            count: 0
-        },
-        {
-            id: 'cat03',
-            name: 'Scott',
-            image: 'http://loremflickr.com/300/200/kitten?random=1',
-            sourceURL: 'http://loremflickr.com',
-            source: 'loremflickr.com',
-            count: 0
-        },
-        {
-            id: 'cat04',
-            name: 'Adam',
-            image: 'http://loremflickr.com/300/200/kitten?random=2',
-            sourceURL: 'http://loremflickr.com',
-            source: 'loremflickr.com',
-            count: 0
-        },
-        {
-            id: 'cat05',
-            name: 'Ali',
-            image: 'http://loremflickr.com/300/200/kitten?random=3',
-            sourceURL: 'http://loremflickr.com',
-            source: 'loremflickr.com',
-            count: 0
-        },
-        {
-            id: 'cat06',
-            name: 'Sean',
-            image: 'http://loremflickr.com/300/200/kitten?random=4',
-            sourceURL: 'http://loremflickr.com',
-            source: 'loremflickr.com',
-            count: 0
-        },
-        {
-            id: 'cat07',
-            name: 'Reggie',
-            image: 'img/cat01.jpg',
-            sourceURL: 'http://all-free-download.com/',
-            source: 'all-free-download.com',
-            count: 0
-        }
-    ]
+  cat: [
+  {
+    id: 'cat01',
+    name: 'Katie',
+    image: 'http://placekitten.com/300/200',
+    sourceURL: 'http://placekitten.com',
+    source: 'placekitten.com',
+    count: 0
+  },
+  {
+    id: 'cat02',
+    name: 'Charlotte',
+    image: 'http://placekitten.com/g/300/200',
+    sourceURL: 'http://placekitten.com',
+    source: 'placekitten.com',
+    count: 0
+  },
+  {
+    id: 'cat03',
+    name: 'Scott',
+    image: 'http://loremflickr.com/300/200/kitten?random=1',
+    sourceURL: 'http://loremflickr.com',
+    source: 'loremflickr.com',
+    count: 0
+  },
+  {
+    id: 'cat04',
+    name: 'Adam',
+    image: 'http://loremflickr.com/300/200/kitten?random=2',
+    sourceURL: 'http://loremflickr.com',
+    source: 'loremflickr.com',
+    count: 0
+  },
+  {
+    id: 'cat05',
+    name: 'Ali',
+    image: 'http://loremflickr.com/300/200/kitten?random=3',
+    sourceURL: 'http://loremflickr.com',
+    source: 'loremflickr.com',
+    count: 0
+  },
+  {
+    id: 'cat06',
+    name: 'Sean',
+    image: 'http://loremflickr.com/300/200/kitten?random=4',
+    sourceURL: 'http://loremflickr.com',
+    source: 'loremflickr.com',
+    count: 0
+  },
+  {
+    id: 'cat07',
+    name: 'Reggie',
+    image: 'img/cat01.jpg',
+    sourceURL: 'http://all-free-download.com/',
+    source: 'all-free-download.com',
+    count: 0
+  }
+  ]
 };
 
 //************************
@@ -102,7 +94,7 @@ function createCats(arrayLength){
   };
 }
 createCats(cats.cat.length);
-console.log(catArray[2].catID);
+//console.log(catArray[2].catID);
 
 //************************
 // Cat Navigation
@@ -113,36 +105,51 @@ var catNav = $('#cat-list');
 function createCatNav(){
   catNav.append('<ul></ul>');
   for (var i = 0; i < catArray.length; i++) {
-    catNav.append('<li><a href="#" class="cat-list-item" id="' + i + '">' + catArray[i].name + '</a></li>');
+    catNav.append('<li><a href="#" class="cat-list-item" id="' + catArray[i].catID + '">' + catArray[i].name + '</a></li>');
+  }
+
+  var catLinks = $('.cat-list-item').toArray();
+  for (var i = 0; i < catLinks.length; i++) {
+    catLinks[i].onclick = function() {
+      //console.log(catArray[this.id]);
+
+      catShow(catArray[this.id]);
+    };
   }
 };
 
 
+//************************
+// Cat Display
+//************************
 
-// cats.list = function(){
-//   $('#cat-list').append('<ul></ul>');
-//   for (var kitty = 0, kittyCount = cats.cat.length; kitty < kittyCount; kitty++){
-//     var formatCatList = catListItem.replace('%data%', cats.cat[kitty].name);
-//     $('#cat-list').append(formatCatList);
-//   }
-// };
+function catShow(catSelected){
+  console.log(catSelected);
 
-cats.display = function(){
-  for (var kitty = 0, kittyCount = cats.cat.length; kitty < kittyCount; kitty++){
-    var formatCatID = catUnit.replace('%data%', cats.cat[kitty].id);
-    $('#cat-arena').append(formatCatID);
+  var catUnit = '<div class="cat-unit" id="' + catSelected.catID + '"><figure id="' + catSelected.catID + '"></figure></div>';
+  var catName = '<figcaption><h3>' + catSelected.name + '</h3></figcaption>';
+  var catImage = '<picture><img src="' + catSelected.image + '" alt="picture of kitten"></picture>';
+  var catSource = '<figcaption>Kitten thanks to <a href="' + catSelected.sourceURL + '">' + catSelected.source + '</a></figcaption>';
 
-    var formatCatName = catName.replace('%data%', cats.cat[kitty].name);
-    $('figure:last').append(formatCatName);
+  $('#cat-arena').append(catUnit);
+  console.log('catUnit: '+ catUnit);
 
-    var formatCatImage = catImage.replace('%data%', cats.cat[kitty].image);
-    $('figure:last').append(formatCatImage);
-    $('figure:last').append('<figcaption class="kitInfo"></figcaption>');
+  $('figure:last').append(catName);
+  $('figure:last').append(catImage);
+  $('figure:last').append('<figcaption class="kitInfo"></figcaption>');
+  $('figure:last').append(catSource);
 
-    var formatCatSource  = catSource.replace('%data%', cats.cat[kitty].sourceURL + '">' + cats.cat[kitty].source);
-    $('figure:last').append(formatCatSource);
-  }
-};
+  $('div .cat-unit').each(function(){
+
+    if($(this).attr('id') == catSelected.catID){
+      $(this).show();
+    }else{
+      $(this).hide();
+    }
+  });
+
+}
+
 
 
 cats.click = function(){
@@ -153,7 +160,6 @@ cats.click = function(){
 // $(function(){}) is shorthand for $(document).ready(function(){})
 
 $(document).ready(function() {
-
 
 
   $('picture').click(function (event) {
@@ -177,6 +183,8 @@ $(document).ready(function() {
     // alternatively
     // $(this).next().text('I has been clicked ' + ++cats.cat[index].count + ' times');
   });
+
+
 });
 
 //cats.list();
