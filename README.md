@@ -31,8 +31,8 @@ _Interaction_
 * create cat display area - arena
 
 **Thoughts/Mods**
-* create a Cat class and use inheritance
+* create a Cat class - need some clarity!
 * <del>create cat containers for cat menu and cat arena</del>
 
 **Helpful Resources**
-
+https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes

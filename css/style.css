@@ -75,7 +75,14 @@ figcaption {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+}
+
+.flex-header {
   justify-content: center;
+}
+
+.flex-main {
+  justify-content: left;
 }
 
 .nav {

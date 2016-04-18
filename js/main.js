@@ -1,11 +1,17 @@
 'use strict';
 
+// need some clarity! try creating a Cat class.
+
+
+
 // helper functions to display html
 
 var catUnit = '<div class="cat-unit"><figure id="%data%"></figure></div>';
 var catName = '<figcaption><h3>%data%</h3></figcaption>';
 var catImage = '<picture><img src="%data%" alt="picture of kitten"></picture>';
 var catSource = '<figcaption>Kitten thanks to <a href="%data%</a></figcaption>';
+var catListItem = '<li class="cat-list-item"><a href="#">%data%</a></li>';
+
 
 // cat JSON
 
@@ -70,6 +76,57 @@ var cats = {
     ]
 };
 
+//************************
+// Cat class
+// old style create class: var Cat = function () {};
+// new ECMAScript 6 style: var Cat = class {};
+// num will be index of item in cat array in json
+//************************
+
+class Cat {
+  constructor(num) {
+    this.catID = num;
+    this.count = 0;
+    this.name = cats.cat[num].name;
+    this.image = cats.cat[num].image;
+    this.sourceURL = cats.cat[num].sourceURL;
+    this.source = cats.cat[num].source;
+  }
+}
+
+var catArray = [];
+
+function createCats(arrayLength){
+  for (var i = 0; i < arrayLength; i++) {
+    catArray.push(new Cat(i));
+  };
+}
+createCats(cats.cat.length);
+console.log(catArray[2].catID);
+
+//************************
+// Cat Navigation
+//************************
+
+var catNav = $('#cat-list');
+
+function createCatNav(){
+  catNav.append('<ul></ul>');
+  for (var i = 0; i < catArray.length; i++) {
+    catNav.append('<li><a href="#" class="cat-list-item" id="' + i + '">' + catArray[i].name + '</a></li>');
+  }
+};
+
+
+
+// cats.list = function(){
+//   $('#cat-list').append('<ul></ul>');
+//   for (var kitty = 0, kittyCount = cats.cat.length; kitty < kittyCount; kitty++){
+//     var formatCatList = catListItem.replace('%data%', cats.cat[kitty].name);
+//     $('#cat-list').append(formatCatList);
+//   }
+// };
+
 cats.display = function(){
   for (var kitty = 0, kittyCount = cats.cat.length; kitty < kittyCount; kitty++){
     var formatCatID = catUnit.replace('%data%', cats.cat[kitty].id);
@@ -87,6 +144,7 @@ cats.display = function(){
   }
 };
 
+
 cats.click = function(){
   //
 };
@@ -95,6 +153,8 @@ cats.click = function(){
 // $(function(){}) is shorthand for $(document).ready(function(){})
 
 $(document).ready(function() {
+
+
 
   $('picture').click(function (event) {
 
@@ -119,4 +179,8 @@ $(document).ready(function() {
   });
 });
 
-cats.display();
+//cats.list();
+
+createCatNav();
+
+//cats.display();
