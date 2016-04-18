@@ -85,3 +85,11 @@ figcaption {
 .display-area{
   width: 75%;
 }
+
+.hidden {
+  display: none;
+}
+
+img {
+  max-width: 300px;
+}

@@ -58,6 +58,14 @@ var cats = {
             sourceURL: 'http://loremflickr.com',
             source: 'loremflickr.com',
             count: 0
+        },
+        {
+            id: 'cat07',
+            name: 'Reggie',
+            image: 'img/cat01.jpg',
+            sourceURL: 'http://all-free-download.com/',
+            source: 'all-free-download.com',
+            count: 0
         }
     ]
 };
