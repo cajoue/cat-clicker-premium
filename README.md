@@ -36,6 +36,7 @@ _Interaction_
 * <del>add known cats!</del>
 
 **Helpful Resources**
+
 https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes
 
 http://api.jquery.com/toArray/
