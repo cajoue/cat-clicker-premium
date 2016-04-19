@@ -2,68 +2,54 @@
 
 // need some clarity! try creating a Cat class.
 
-var catListItem = '<li class="cat-list-item"><a href="#">%data%</a></li>';
-
+// the chosen cat
+var catSelected;
 
 // cat JSON
 
 var cats = {
   cat: [
   {
-    id: 'cat01',
-    name: 'Katie',
+    name: 'Mystery',
     image: 'http://placekitten.com/300/200',
     sourceURL: 'http://placekitten.com',
     source: 'placekitten.com',
-    count: 0
   },
   {
-    id: 'cat02',
-    name: 'Charlotte',
-    image: 'http://placekitten.com/g/300/200',
-    sourceURL: 'http://placekitten.com',
-    source: 'placekitten.com',
-    count: 0
+    name: 'Elsa',
+    image: 'img/elsa.jpg',
+    sourceURL: '#',
+    source: "Mum's Cat",
   },
   {
-    id: 'cat03',
-    name: 'Scott',
-    image: 'http://loremflickr.com/300/200/kitten?random=1',
-    sourceURL: 'http://loremflickr.com',
-    source: 'loremflickr.com',
-    count: 0
+    name: 'Molly',
+    image: 'img/molly.jpg',
+    sourceURL: '#',
+    source: "Lin's Cat",
   },
   {
-    id: 'cat04',
-    name: 'Adam',
+    name: 'Nero',
+    image: 'img/nero.jpg',
+    sourceURL: '#',
+    source: "Mum's Cat",
+  },
+  {
+    name: 'Reggie',
+    image: 'img/reggie.jpg',
+    sourceURL: '#',
+    source: "Mum's Cat",
+  },
+  {
+    name: 'Flicker',
     image: 'http://loremflickr.com/300/200/kitten?random=2',
     sourceURL: 'http://loremflickr.com',
     source: 'loremflickr.com',
-    count: 0
   },
   {
-    id: 'cat05',
-    name: 'Ali',
-    image: 'http://loremflickr.com/300/200/kitten?random=3',
-    sourceURL: 'http://loremflickr.com',
-    source: 'loremflickr.com',
-    count: 0
-  },
-  {
-    id: 'cat06',
-    name: 'Sean',
-    image: 'http://loremflickr.com/300/200/kitten?random=4',
-    sourceURL: 'http://loremflickr.com',
-    source: 'loremflickr.com',
-    count: 0
-  },
-  {
-    id: 'cat07',
-    name: 'Reggie',
+    name: 'Free',
     image: 'img/cat01.jpg',
     sourceURL: 'http://all-free-download.com/',
     source: 'all-free-download.com',
-    count: 0
   }
   ]
 };
@@ -72,7 +58,7 @@ var cats = {
 // Cat class
 // old style create class: var Cat = function () {};
 // new ECMAScript 6 style: var Cat = class {};
-// num will be index of item in cat array in json
+// numCats will be number of items in cat array in json
 //************************
 
 class Cat {
@@ -84,17 +70,21 @@ class Cat {
     this.sourceURL = cats.cat[num].sourceURL;
     this.source = cats.cat[num].source;
   }
+
+  clicked() {
+    var pic = '#span' + this.catID + '';
+    $(pic).text(++this.count);
+  }
 }
 
 var catArray = [];
 
-function createCats(arrayLength){
-  for (var i = 0; i < arrayLength; i++) {
+function createCats(numCats){
+  for (var i = 0; i < numCats; i++) {
     catArray.push(new Cat(i));
-  };
+  }
+
 }
-createCats(cats.cat.length);
-//console.log(catArray[2].catID);
 
 //************************
 // Cat Navigation
@@ -112,83 +102,78 @@ function createCatNav(){
   for (var i = 0; i < catLinks.length; i++) {
     catLinks[i].onclick = function() {
       //console.log(catArray[this.id]);
-
       catShow(catArray[this.id]);
     };
   }
-};
-
+}
 
 //************************
 // Cat Display
+// Cat display format
 //************************
 
-function catShow(catSelected){
-  console.log(catSelected);
+function catDisplay(){
+  var catUnit;
+  var catName;
+  var catImage;
+  var catSource;
 
-  var catUnit = '<div class="cat-unit" id="' + catSelected.catID + '"><figure id="' + catSelected.catID + '"></figure></div>';
-  var catName = '<figcaption><h3>' + catSelected.name + '</h3></figcaption>';
-  var catImage = '<picture><img src="' + catSelected.image + '" alt="picture of kitten"></picture>';
-  var catSource = '<figcaption>Kitten thanks to <a href="' + catSelected.sourceURL + '">' + catSelected.source + '</a></figcaption>';
+  for (var i = 0, kittyCount = catArray.length; i < kittyCount; i++){
+    catUnit = '<div class="cat-unit" id="' + catArray[i].catID + '"><figure id="' + catArray[i].catID + '"></figure></div>';
+    catName = '<figcaption><h3>' + catArray[i].name + '</h3></figcaption>';
+    catImage = '<picture><img src="' + catArray[i].image + '" alt="picture of kitten"></picture>';
+    catSource = '<figcaption>Kitten thanks to <a href="' + catArray[i].sourceURL + '">' + catArray[i].source + '</a></figcaption>';
 
-  $('#cat-arena').append(catUnit);
-  console.log('catUnit: '+ catUnit);
+    $('#cat-arena').append(catUnit);
+    $('figure:last').append(catName);
+    $('figure:last').append('<figcaption class="kitInfo">I has been clicked <span id="span' + catArray[i].catID + '">' + catArray[i].count + '</span> times</figcaption>');
+    $('figure:last').append(catImage);
+    $('figure:last').append(catSource);
+  }
+}
 
-  $('figure:last').append(catName);
-  $('figure:last').append(catImage);
-  $('figure:last').append('<figcaption class="kitInfo"></figcaption>');
-  $('figure:last').append(catSource);
+//************************
+// Cat Show
+// Show only the selected cat
+//************************
+
+function catShow(catChoice){
+  catSelected = catChoice;
 
   $('div .cat-unit').each(function(){
-
     if($(this).attr('id') == catSelected.catID){
       $(this).show();
     }else{
       $(this).hide();
     }
   });
-
 }
 
+//************************
+// Cat Clicker
+//************************
 
-
-cats.click = function(){
-  //
-};
+function catClicker(numCats){
+  createCats(numCats);
+  createCatNav();
+  catDisplay();
+  var catRandom = Math.floor(Math.random() * numCats);
+  catShow(catArray[catRandom]);
+}
 
 // use $(document).ready() for jQuery code in external js file
 // $(function(){}) is shorthand for $(document).ready(function(){})
 
 $(document).ready(function() {
-
-
   $('picture').click(function (event) {
+    // first succesful solution
+    // var target = $(this).parent().children('.kitInfo');
+    // // update number of clicks for the particular cat.
+    // target.text('I has been clicked ' + ++catSelected.count + ' times');
 
-    // identify which cat was clicked
-    var catID = $(this).parent().attr("id");
-
-    // find index of this cat in cat JSON
-    for (var i = 0, numCats = cats.cat.length; i < numCats; i++) {
-      if (cats.cat[i].id == catID) {
-        var index = i;
-      };
-    };
-
-    // get the parent and target the required sibling
-    // var target = $(this).closest('figure').children('.kitInfo');
-    var target = $(this).parent().children('.kitInfo');
-
-    // update number of clicks for the particular cat.
-    target.text('I has been clicked ' + ++cats.cat[index].count + ' times');
-    // alternatively
-    // $(this).next().text('I has been clicked ' + ++cats.cat[index].count + ' times');
+    // // this acts as a closure on the currently selected cat - I think!
+    catSelected.clicked();
   });
-
-
 });
 
-//cats.list();
-
-createCatNav();
-
-//cats.display();
+catClicker(cats.cat.length);
